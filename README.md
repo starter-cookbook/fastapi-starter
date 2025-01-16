@@ -37,3 +37,12 @@ Initial set. Does not need to be done again
     ```bash
     pip install "fastapi[all]"
     ```
+    * This will also install other things like uvicorn
+    * If an error occurs due to a `wheel` error install `wheel`
+        ```bash
+        pip install wheel
+        ```
+6. Freeze requirements
+    ```bash
+    pip freeze > requirements.txt
+    ```
