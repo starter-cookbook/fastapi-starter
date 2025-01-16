@@ -8,3 +8,6 @@ load_dotenv()
 # In the .env in dev set this to "/openapi.json"
 # In production set it to an empty string or do not set it at all
 OPENAPI_URL = os.getenv("OPENAPI_URL")
+
+# Just a basic config value
+CONFIG_CHECK = os.getenv("CONFIG_CHECK")
