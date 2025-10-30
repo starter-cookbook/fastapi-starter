@@ -4,6 +4,7 @@ Basic sample to set up a FastAPI app
 ## Uses
 
 * Python 3.12+
+* [Poetry](https://python-poetry.org/)
 * [FastAPI](https://fastapi.tiangolo.com/)
 
 
@@ -24,7 +25,10 @@ Initial set. Does not need to be done again
 1. Create VSCode Dev Container for Python3
     * This is done via VSCode's "Add Dev Container Configuration Files..." action
     * Chose "Python 3" container with version `bullseye 3.12`
-2. Reopen folder in the Dev Container.
+    * Add `"postCreateCommand": "curl -sSL https://install.python-poetry.org | python3 -"` to install Poetry
+        * See the Poetry site for most up to date install script
+2. Reopen folder in the Dev Container
+    * This will take a while on first creation
 3. Create virtual environment
     ```bash
     python3 -m venv venv
@@ -145,3 +149,48 @@ There is also http://127.0.0.1:8000/redoc
 FastAPI will also crate an OpenAPI json at http://127.0.0.1:8000/openapi.json
 
 
+## The old pip+venv way
+
+This section is a note on the basic pip + venv way to set up the project.
+
+You do not need this. This is only for historical reference.
+
+1. Starting with a basic python dev container
+2. Create virtual environment
+    ```bash
+    python3 -m venv venv
+    ```
+    * Python will be in `./venv/bin/python`
+        * Use that path to tell VSCode which python to use
+3. Activate virtual environment
+    ```bash
+    source venv/bin/activate
+    ```
+4. Install whatever you need
+    ```bash
+    pip install "package name"
+    ```
+
+### Freeze requirements
+
+```bash
+pip freeze > requirements.txt
+```
+
+### Install dependencies from the requirements.txt
+
+```bash
+pip install -r requirements.txt
+```
+
+### Update pip
+```bash
+# activate venv first
+pip install --upgrade pip
+```
+
+### If you need to deactivate venv
+
+```bash
+deactivate
+```
