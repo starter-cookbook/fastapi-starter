@@ -29,121 +29,102 @@ poetry init
 
 This will take you through project config and creates `pyproject.toml` based on input.
 
+If your source files are in a subfolder like `app` then tell `poetry` where the package is by adding this to the bottom of the `pyproject.tml`
+
+```toml
+[tool.poetry]
+packages = [
+    {include = "app"}
+]
+```
+
 ### Initial dependencies
 
 ```bash
 poetry add fastapi[all]
+# fastapi[all] installs all kinds of fastapi stuff, including requests and uvicorn.  You can exclude [all] but then you'd install each package as needed.
 ```
-
-This creates the `poetry.lock` and also updates `pyproject.toml`
-
-3. Create virtual environment
-    ```bash
-    python3 -m venv venv
-    ```
-4. Activate virtual environment
-    ```bash
-    source venv/bin/activate
-    ```
-5. Install FastAPI
-    ```bash
-    pip install "fastapi[all]"
-    ```
-    * This will also install other things like uvicorn
-    * If an error occurs due to a `wheel` error install `wheel`
-        ```bash
-        pip install wheel
-        ```
-6. Freeze requirements
-    ```bash
-    pip freeze > requirements.txt
-    ```
 
 ## Setting up from repo clone
 
 This is how to set up the project if you are doing a fresh clone of the repo
 
+### Clone and run app
+
 1. Clone repo
 2. cd into project directory
 3. Open the repo folder in VSCode
     * VSCode should ask you want to open it in a Dev Container, select yes
-4. Create a virtual environment
-    ```bash
-    python3 -m venv venv
-    ```
-5. Activate the venv
-    ```bash
-    source venv/bin/activate
-    ```
-    * Check you are in the venv
-        ```bash
-        which python && which pip
-        # should display /venv/bin/python and venv/bin/pip
-        ```
-6. Optionally add an alias to your bashrc to activate venv easier
-    ```bash
-    # in ~/.bashrc add the following
-    alias start_venv=`source venv/bin/activate`
-    ```
-7. Install dependencies from the requirements.txt
-    ```bash
-    pip install -r requirements.txt
-    ```
-8. Tell VSCode to use the correct Python interpreter
-    1. `ctrl` + `shift` + `p`
-    2. Start to type: `Python: Select Interpreter"
-    3. Choose `./venv/bin/python`
-        * If it's not available choose `Enter interpreter path...` then enter `./venv/bin/python`
-    4. When you are on a `.py` file you should be able to see the interpreter being used in the lower right of VSCode
-9. Set up env vars - see `Environment variables` section
+4. Copy `example.env` to `.env`
+    * See `Environment variables` section for more details
+5. Install dependencies with `poetry install`
+6. Run the app with `poetry run uvicorn app.main:app --reload`
+    * If you activate the env you don't need `poetry run`
 
+### Activate virtual env
+
+Without activating the virtual env you need to run things through `poetry`.  For example `poetry run python hello.py` or `poetry run uvicorn....`
+
+Activate the virtual env so you can just do `python hello.py`
+
+This is a shortcut to activate the env
+
+```bash
+eval $(poetry env activate)
+```
+
+This is an explanation of what it is doing.
+
+```bash
+# Shows the command to activate the env
+poetry env activate
+# Then you copy that command and run it
+# It will look something like this
+# source /home/vscode/.cache/pypoetry/virtualenvs/project-name-aBc123-py3.12/bin/activate
+# After running that the env is activated
+which python
+# Should show you are using the python in the virtual env
+# So doing eval $(poetry env activate) evaluates the source command that env activate outputs
+```
+
+#### Deactivate the env
+
+```bash
+deactivate
+```
+
+### VSCode Python Selection
+
+Tell VSCode to use the correct Python interpreter.  If you use the wrong python your .py files will show errors because the packages may not be installed to that environment.
+
+1. `ctrl` + `shift` + `p` and start to type: `Python: Select Interpreter"
+    * alternatively open a `.py` file and at the bottom right there should be a python version displayed.  Click that and you can choose which python to use.
+2. Choose the one created by `poetry`
+    * If it's not available you can find the path using `poetry env info` under `Virtualenv` and next to `Executable` you can see the path that ends with `/bin/python`.  That's the python `poetry` uses.  Enter the entire path.
+    * You need to do `poetry install` first so it creats the env
+3. When you are on a `.py` file you should be able to see the interpreter being used in the lower right of VSCode
 
 ## Environment varialbles
 
 1. Copy `example.env` to `.env`
 2. Fill out the `.env` values as needed
 
+`.env` is in the gitingore since it may contain senstive info like keys.
+
 Note that you can also just create the env varables at the OS or container level.  For example in the `~/.bash_profile` but it's not recommended.
-
-## Freeze requirements
-
-Do this when a package is added
-
-```bash
-pip freeze > requirements.txt
-```
-
-## Install requirements
-
-Do this when you need to install requirements.  Usually this is when you do a clean clone or when requirements.txt has been changed by someone else.
-
-```bash
-pip install -r requirements.txt
-```
-
-## Updating pip
-
-If you need to update pip
-
-```bash
-# activate venv
-pip install --upgrade pip
-```
-
-## Deactivate venv
-
-Shouldn't need to do this, but if you need to it can be done with
-
-```bash
-deactivate
-```
 
 ## Run app
 
 ```bash
+# Activate the env
 # run app locally and reload on code changes
 uvicorn app.main:app --reload
 # the app will run under http://127.0.0.1:8000
+```
+
+```bash
+# If you do not activate the env you can still run the app
+poetry run uvicorn app.main:app --reload
 ```
 
 ### Docs
@@ -179,13 +160,41 @@ Installs dependencies from lock file.
 poetry install
 ```
 
-### Activate shell
-
-Note that this is mainly if you want to run `python` commands directly.  Poetry installs packages to an isolated environment regardless of whether you activate shell.
+### See Poetry env info
 
 ```bash
-poetry shell
-# now you can do python run instead of poetry python run
+# list
+poetry env list
+
+# see everything
+poetry env info
+
+# see just the virtual environment path
+# useful in telling VSCode which python to use
+poetry env info --path
+```
+
+### Activate env
+
+```bash
+eval $(poetry env activate)
+```
+
+#### Deactivate env
+
+```bash
+deactivate
+```
+
+### Delete the env
+
+This can be useful if you want to wipe the env and install all packages again.
+
+```bash
+# list the envs
+poetry env list
+# remove the env, replace project-name-id-py3.12 with actual env name
+poetry env remove project-name-id-py3.12
 ```
 
 ## The old pip+venv way
