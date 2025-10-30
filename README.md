@@ -7,28 +7,36 @@ Basic sample to set up a FastAPI app
 * [Poetry](https://python-poetry.org/)
 * [FastAPI](https://fastapi.tiangolo.com/)
 
-
-## Useful commands
-
-```bash
-# activate virtual environment (venv) for python
-source venv/bin/activate
-
-# run app
-uvicorn app.main:app --reload
-```
-
 ## Initial set up
 
-Initial set. Does not need to be done again
+Initial set. Does not need to be done again.
 
-1. Create VSCode Dev Container for Python3
-    * This is done via VSCode's "Add Dev Container Configuration Files..." action
-    * Chose "Python 3" container with version `bullseye 3.12`
-    * Add `"postCreateCommand": "curl -sSL https://install.python-poetry.org | python3 -"` to install Poetry
-        * See the Poetry site for most up to date install script
-2. Reopen folder in the Dev Container
+### Create VSCode Dev Container for Python3
+
+* This is done via VSCode's "Add Dev Container Configuration Files..." action
+* Chose "Python 3" container with version `bullseye 3.12`
+* Add `"postCreateCommand": "curl -sSL https://install.python-poetry.org | python3 -"` to install Poetry
+    * See the Poetry site for most up to date install script
+    * Alternatively you can run this script in the dev container if you do not use the `postCreateCommand`
+* Reopen folder in the Dev Container
     * This will take a while on first creation
+
+### Init the project with Poetry
+
+```bash
+poetry init
+```
+
+This will take you through project config and creates `pyproject.toml` based on input.
+
+### Initial dependencies
+
+```bash
+poetry add fastapi[all]
+```
+
+This creates the `poetry.lock` and also updates `pyproject.toml`
+
 3. Create virtual environment
     ```bash
     python3 -m venv venv
@@ -148,6 +156,20 @@ There is also http://127.0.0.1:8000/redoc
 
 FastAPI will also crate an OpenAPI json at http://127.0.0.1:8000/openapi.json
 
+
+## Useful Poetry commands
+
+### Version
+
+```bash
+poetry --version
+```
+
+### Add a package
+
+```bash
+poetry add package-name
+```
 
 ## The old pip+venv way
 
