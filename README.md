@@ -171,6 +171,23 @@ poetry --version
 poetry add package-name
 ```
 
+### Install dependencies
+
+Installs dependencies from lock file.
+
+```bash
+poetry install
+```
+
+### Activate shell
+
+Note that this is mainly if you want to run `python` commands directly.  Poetry installs packages to an isolated environment regardless of whether you activate shell.
+
+```bash
+poetry shell
+# now you can do python run instead of poetry python run
+```
+
 ## The old pip+venv way
 
 This section is a note on the basic pip + venv way to set up the project.
