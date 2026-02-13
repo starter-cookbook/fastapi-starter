@@ -1,0 +1,44 @@
+remote_theme: just-the-docs/just-the-docs@v0.11.1
+plugins:
+- jekyll-remote-theme
+- jemoji
+
+title: FastAPI Starter
+description: Getting started with FastAPI.
+
+# Aux links for the upper right navigation
+aux_links:
+  "GitHub":
+    - "//github.com/starter-cookbook/fastapi-starter"
+
+# Makes Aux links open in a new tab. Default is false
+aux_links_new_tab: true
+
+nav_external_links:
+  - title: Issues
+    url: https://github.com/starter-cookbook/fastapi-starter/issues
+    hide_icon: false
+    opens_in_new_tab: true
+  - title: Discussions
+    url: https://github.com/starter-cookbook/fastapi-starter/discussions
+    hide_icon: false
+    opens_in_new_tab: true
+
+color_scheme: wider
+
+callouts:
+  warning:
+    title: Warning
+    color: orange
+  information:
+    title: Information
+    color: blue
+  tip:
+    title: Tip
+    color: green
+  danger:
+    title: Danger
+    color: red
+  note:
+    title: Note
+    color: grey
