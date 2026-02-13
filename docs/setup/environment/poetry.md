@@ -35,7 +35,7 @@ poetry init
 
 This will take you through project config and creates `pyproject.toml` based on input.
 
-If your source files are in a subfolder like `app` then tell `poetry` where the package is by adding this to the bottom of the `pyproject.tml`
+If your source files are in a subfolder like `app` then tell `poetry` where the package is by adding this to the bottom of the `pyproject.toml`
 
 ```toml
 [tool.poetry]
