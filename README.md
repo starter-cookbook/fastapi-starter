@@ -48,6 +48,7 @@ This is how to set up the project if you are doing a fresh clone of the repo
 4. Copy `example.env` to `.env`
     * See `Environment variables` section for more details
 5. Install dependencies with `uv sync`
+    * This should create a `.venv` folder
 6. Run the app with `uv run uvicorn app.main:app --reload`
 
 ### VSCode Python Selection
@@ -73,15 +74,19 @@ Note that you can also just create the env varables at the OS or container level
 ## Run app
 
 ```bash
+uv run uvicorn app.main:app --reload
+```
+
+It is possible to run the app without the `uv run`
+
+```bash
 # Activate the env
+source .venv/bin/activate
 # run app locally and reload on code changes
 uvicorn app.main:app --reload
 # the app will run under http://127.0.0.1:8000
-```
-
-```bash
-# If you do not activate the env you can still run the app
-uv run uvicorn app.main:app --reload
+# deactivate venv if you want
+deactivate
 ```
 
 ### Docs
@@ -94,62 +99,15 @@ There is also http://127.0.0.1:8000/redoc
 
 FastAPI will also crate an OpenAPI json at http://127.0.0.1:8000/openapi.json
 
-
-## Useful Poetry commands
-
-### Version
+### Basic UV commands
 
 ```bash
-poetry --version
-```
+# add a package
+uv add package-name
 
-### Add a package
+# remove a package
+uv remove package-name
 
-```bash
-poetry add package-name
-```
-
-### Install dependencies
-
-Installs dependencies from lock file.
-
-```bash
-poetry install
-```
-
-### See Poetry env info
-
-```bash
-# list
-poetry env list
-
-# see everything
-poetry env info
-
-# see just the virtual environment path
-# useful in telling VSCode which python to use
-poetry env info --path
-```
-
-### Activate env
-
-```bash
-eval $(poetry env activate)
-```
-
-#### Deactivate env
-
-```bash
-deactivate
-```
-
-### Delete the env
-
-This can be useful if you want to wipe the env and install all packages again.
-
-```bash
-# list the envs
-poetry env list
-# remove the env, replace project-name-id-py3.12 with actual env name
-poetry env remove project-name-id-py3.12
+# run something
+uv run python main.py
 ```

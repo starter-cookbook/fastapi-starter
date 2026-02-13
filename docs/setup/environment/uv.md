@@ -79,6 +79,25 @@ You can also activate the venv with `source .venv/bin/activate`, but you do not 
 uv sync
 ```
 
+### Run app
+
+```bash
+# Example running a fastAPI app with uvicorn
+uv run uvicorn app.main:app --reload
+```
+
+It is possible to run the app without the `uv run`
+
+```bash
+# Activate the env
+source .venv/bin/activate
+# run app locally and reload on code changes
+uvicorn app.main:app --reload
+# the app will run under http://127.0.0.1:8000
+# deactivate venv if you want
+deactivate
+```
+
 ### Install package
 
 ```bash
