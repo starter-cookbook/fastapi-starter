@@ -29,16 +29,13 @@ color_scheme: wider
 callouts:
   warning:
     title: Warning
-    color: orange
+    color: red
   information:
     title: Information
     color: blue
   tip:
     title: Tip
     color: green
-  danger:
-    title: Danger
-    color: red
   note:
     title: Note
     color: grey
