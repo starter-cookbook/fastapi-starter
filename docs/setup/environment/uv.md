@@ -71,7 +71,7 @@ uv will create the `.venv` folder as needed so you do not need to create it, but
 uv venv
 ```
 
-You can also activate the venv with `source .venv/bin/activate`, but you do not need to do this if you are using the uv command.  You would do this if you wanated to run the app without the `uv run` command.
+You can also activate the venv with `source .venv/bin/activate`, but you do not need to do this if you are using the uv command.  You would do this if you wanted to run the app without the `uv run` command.
 
 ### Install all dependencies
 
@@ -111,7 +111,7 @@ uv add -r requirements.txt
 ```
 
 {: .warning }
-This will install all packages in the `requirements.txt` as you added them with the `add` command. So all package will appear in the pyproject.toml.
+This will install all packages in the `requirements.txt` as you added them with the `add` command. So all the packages listed in the requirements.txt will appear in the pyproject.toml.
 
 ### Remove package
 
