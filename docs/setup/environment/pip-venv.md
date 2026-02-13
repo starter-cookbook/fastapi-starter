@@ -1,5 +1,6 @@
 ---
 title: Using Pip + venv
+parent: Environment
 nav_order: 3
 ---
 

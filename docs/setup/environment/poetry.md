@@ -1,5 +1,6 @@
 ---
 title: Using Poetry
+parent: Environment
 nav_order: 2
 ---
 
