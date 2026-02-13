@@ -23,8 +23,8 @@ For the latest on installing and using Poetry visit the official web site [pytho
     "postCreateCommand": "curl -sSL https://install.python-poetry.org | python3 -"
     ```
 
-        1. This will install Poetry after your dev container is created or recreated.  Alternatively you can install Poetry manually.
-        2. See the official Poetry site for updated install instructions.
+    1. This will install Poetry after your dev container is created or recreated.  Alternatively you can install Poetry manually.
+    2. See the official Poetry site for updated install instructions.
 
 ## Initial project set up
 
@@ -86,7 +86,7 @@ poetry run uvicorn app.main:app --reload
 If you activate the virtual env you do no need to type `poetry run`
 
 ```bash
-# Activate the env
+# Activate the env then run
 uvicorn app.main:app --reload
 ```
 
