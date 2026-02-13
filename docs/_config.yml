@@ -27,15 +27,17 @@ nav_external_links:
 color_scheme: wider
 
 callouts:
-  warning:
-    title: Warning
-    color: red
-  information:
-    title: Information
+  highlight:
+    color: yellow
+  important:
+    title: Important
     color: blue
-  tip:
-    title: Tip
+  new:
+    title: New
     color: green
   note:
     title: Note
-    color: grey
+    color: purple
+  warning:
+    title: Warning
+    color: red
