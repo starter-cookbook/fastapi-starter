@@ -81,7 +81,7 @@ uvicorn app.main:app --reload
 
 ```bash
 # If you do not activate the env you can still run the app
-poetry run uvicorn app.main:app --reload
+uv run uvicorn app.main:app --reload
 ```
 
 ### Docs

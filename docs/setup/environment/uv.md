@@ -63,6 +63,16 @@ uv --version
 uv init
 ```
 
+### Create .venv
+
+uv will create the `.venv` folder as needed so you do not need to create it, but you can if you want to recreate it.
+
+```bash
+uv venv
+```
+
+You can also activate the venv with `source .venv/bin/activate`, but you do not need to do this if you are using the uv command.  You would do this if you wanated to run the app without the `uv run` command.
+
 ### Install all dependencies
 
 ```bash
