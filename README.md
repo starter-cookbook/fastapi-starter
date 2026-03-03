@@ -9,7 +9,7 @@ Basic sample to set up a FastAPI app
 
 ## Initial set up
 
-Initial set. Does not need to be done again.
+Initial set. Does not need to be done again. This only shows initial set up. Additional dependencies and version upgrades may have been done later.
 
 ### Created VSCode Dev Container for Python3
 
@@ -62,14 +62,14 @@ Tell VSCode to use the correct Python interpreter.  If you use the wrong python 
     * You need to do `uv` command first so it creats the `.venv`
 3. When you are on a `.py` file you should be able to see the interpreter being used in the lower right of VSCode
 
-## Environment varialbles
+## Environment variables
 
 1. Copy `example.env` to `.env`
 2. Fill out the `.env` values as needed
 
 `.env` is in the gitingore since it may contain senstive info like keys.
 
-Note that you can also just create the env varables at the OS or container level.  For example in the `~/.bash_profile` but it's not recommended.
+Note that you can also just create the env varables at the OS or container level.  For example in the `~/.bash_profile` but it's not recommended since you would then need to remember you created those variables outside of the project files.
 
 ## Run app
 
@@ -77,7 +77,7 @@ Note that you can also just create the env varables at the OS or container level
 uv run uvicorn app.main:app --reload
 ```
 
-It is possible to run the app without the `uv run`
+It is possible to run the app without the `uv run`.
 
 ```bash
 # Activate the env
