@@ -52,10 +52,10 @@ Commonly VSCode with a Dev Container is used.  Typically it uses Docker a contai
    code .
    ```
 
-3. Open the `Command Palette` typically `Ctrl` + `Shift` + `P`
-4. Start typing `Dev Containers: Add Dev Containers Configuration Files...`
-5. Select `Add configuration to workspace`
-  1. This will create a `.devcontainer` folder and allow you to include your Dev Container configuration in source control.
+2. Open the `Command Palette` typically `Ctrl` + `Shift` + `P`
+3. Start typing `Dev Containers: Add Dev Containers Configuration Files...`
+4. Select `Add configuration to workspace`
+    1. This will create a `.devcontainer` folder and allow you to include your Dev Container configuration in source control.
 5. Select a Dev Container `Python 3` by `devcontainers` is a basic container that can be used
 6. Select the default version it offers (3.12, 3.14 or higher)
 7. You can skip "Select additional features to install"
@@ -63,16 +63,16 @@ Commonly VSCode with a Dev Container is used.  Typically it uses Docker a contai
 9. VSCode may ask for permission to access files.  You must allow it to access files.
 10. You should now have a `.devcontainer/devcontainer.json` in your folder.  If you opted to add dependabot configuration you should also see that file.
 11. VSCode should prompt you with a message "Folder contains a Dev Container configuration file. Reopen folder to develop in a container" select "Reopen in Container" to open your folder in the Dev Container.
-  1. Alternatively, if you are not prompted, click on the `><` in the bottom left of the VSCode window and select "Reopen in Container"
+    1. Alternatively, if you are not prompted, click on the `><` in the bottom left of the VSCode window and select "Reopen in Container"
 12. VSCode will then build the container and reopen your folder in the container.  This may take some minutes.  Click on "(show log)" to check on progress.
-13.  Once VSCode completes building the container and reopens your folder in the container open the VSCode Terminal and type
+13. Once VSCode completes building the container and reopens your folder in the container open the VSCode Terminal and type
 
   ```bash
   python --version
   which python
   ```
 
-  You should see output similar to
+14. You should see output similar to
 
   ```bash
   vscode ➜ /workspaces/my-python-app $ python --version
@@ -82,5 +82,5 @@ Commonly VSCode with a Dev Container is used.  Typically it uses Docker a contai
   vscode ➜ /workspaces/my-python-app $ 
   ```
 
-14. When you close VSCode and reopen your project folder later choose to oepn it in the container.
+15. When you close VSCode and reopen your project folder later choose to oepn it in the container.
 
